@@ -59,3 +59,10 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## Import Organization
+
+- Group imports in the following order, separated by blank lines:
+  1. Angular imports (e.g., `@angular/core`, `@angular/common`)
+  2. Local application imports (e.g., `@reddit-web/*`, relative imports)
+  3. Third-party library imports (e.g., `rxjs`)
