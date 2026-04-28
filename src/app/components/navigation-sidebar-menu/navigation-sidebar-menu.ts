@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MenuItem } from '../../types/menu-item.interface';
+import { MenuItem } from '@/types/menu-item.interface';
 
 @Component({
   selector: 'app-navigation-sidebar-menu',
