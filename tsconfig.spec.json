@@ -4,6 +4,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
+    "baseUrl": "./",
+    "paths": {
+      "@reddit-web/*": ["src/app/*"]
+    },
     "types": [
       "vitest/globals"
     ]
