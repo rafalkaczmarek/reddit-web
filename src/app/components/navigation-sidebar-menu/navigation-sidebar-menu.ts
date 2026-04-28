@@ -1,32 +1,37 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MenuBar, MenuItem } from '@angular/aria/menu';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { MenuItem } from '@reddit-web/types/menu-item.interface';
+import { MenuItem as NavigationMenuItem } from '../../types/menu-item.interface';
 
 @Component({
   selector: 'app-navigation-sidebar-menu',
-  imports: [],
+  imports: [MenuBar, MenuItem, RouterLink, RouterLinkActive],
   templateUrl: './navigation-sidebar-menu.html',
   styleUrl: './navigation-sidebar-menu.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationSidebarMenu {
-  protected menuItems: MenuItem[] = [
-    { label: 'Dashboard', icon: 'las la-tachometer-alt', active: true },
-    { label: 'Products', icon: 'las la-box' },
-    { label: 'Favourites', icon: 'las la-heart' },
-    { label: 'Messenger', icon: 'las la-envelope' },
-    { label: 'Order Lists', icon: 'las la-list' },
-    { label: 'E-commerce', icon: 'las la-shopping-cart' },
-    { label: 'File Manager', icon: 'las la-folder' },
-    { label: 'Calendar', icon: 'las la-calendar' },
-    { label: 'Feed', icon: 'las la-rss' },
-    { label: 'To-Do', icon: 'las la-check-square' },
-    { label: 'Contact', icon: 'las la-address-book' },
-    { label: 'Invoice', icon: 'las la-file-invoice' },
-    { label: 'UI Elements', icon: 'las la-palette' },
-    { label: 'Profile', icon: 'las la-user' },
-    { label: 'Table', icon: 'las la-table' },
-    { label: 'Settings', icon: 'las la-cog' },
-    { label: 'Logout', icon: 'las la-sign-out-alt' },
+  protected mainMenuItems: NavigationMenuItem[] = [
+    { label: 'Dashboard', icon: 'las la-tachometer-alt', route: '/dashboard' },
+    { label: 'Products', icon: 'las la-box', route: '/products' },
+    { label: 'Favourites', icon: 'las la-heart', route: '/favourites' },
+    { label: 'Messenger', icon: 'las la-envelope', route: '/messenger' },
+    { label: 'Order Lists', icon: 'las la-list', route: '/order-lists' },
+    { label: 'E-commerce', icon: 'las la-shopping-cart', route: '/e-commerce' },
+  ];
+
+  protected secondaryMenuItems: NavigationMenuItem[] = [
+    { label: 'File Manager', icon: 'las la-folder', route: '/file-manager' },
+    { label: 'Calendar', icon: 'las la-calendar', route: '/calendar' },
+    { label: 'Feed', icon: 'las la-rss', route: '/feed' },
+    { label: 'To-Do', icon: 'las la-check-square', route: '/to-do' },
+    { label: 'Contact', icon: 'las la-address-book', route: '/contact' },
+    { label: 'Invoice', icon: 'las la-file-invoice', route: '/invoice' },
+    { label: 'UI Elements', icon: 'las la-palette', route: '/ui-elements' },
+    { label: 'Profile', icon: 'las la-user', route: '/profile' },
+    { label: 'Table', icon: 'las la-table', route: '/table' },
+    { label: 'Settings', icon: 'las la-cog', route: '/settings' },
+    { label: 'Logout', icon: 'las la-sign-out-alt', route: '/logout' },
   ];
 }

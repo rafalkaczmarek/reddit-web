@@ -1,0 +1,5 @@
+<app-page-heading [id]="headingId()" [text]="title()"></app-page-heading>
+
+@if (description()) {
+  <app-page-description [text]="description()!"></app-page-description>
+}

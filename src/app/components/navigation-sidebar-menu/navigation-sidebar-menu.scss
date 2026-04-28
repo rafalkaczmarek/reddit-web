@@ -24,11 +24,15 @@
 }
 
 .menu-item {
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 10px;
   margin-bottom: 5px;
   color: white;
+  background: transparent;
+  border: none;
+  text-align: left;
   cursor: pointer;
   border-radius: 6px;
   transition: background 0.2s;
@@ -40,6 +44,11 @@
 
 .menu-item.active {
   background: #4c61cc;
+}
+
+.menu-item:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
 }
 
 .menu-item i {
