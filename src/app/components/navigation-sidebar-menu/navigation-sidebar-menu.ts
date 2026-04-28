@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MenuBar, MenuItem } from '@angular/aria/menu';
+import { Tree, TreeItem } from '@angular/aria/tree';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { MenuItem as NavigationMenuItem } from '../../types/menu-item.interface';
+import { NavigationMenuItem } from '@reddit-web/types/navigation-menu-item.interface';
 
 @Component({
   selector: 'app-navigation-sidebar-menu',
-  imports: [MenuBar, MenuItem, RouterLink, RouterLinkActive],
+  imports: [Tree, TreeItem, RouterLink, RouterLinkActive],
   templateUrl: './navigation-sidebar-menu.html',
   styleUrl: './navigation-sidebar-menu.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

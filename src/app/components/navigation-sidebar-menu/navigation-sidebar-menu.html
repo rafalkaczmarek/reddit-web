@@ -1,13 +1,14 @@
-<nav class="sidebar" ngMenuBar aria-label="Main navigation menu" aria-orientation="vertical">
+<nav class="sidebar" ngTree #navigationTree="ngTree" aria-label="Main navigation menu" [nav]="true" orientation="vertical">
   <div class="logo">
     <span class="logo-text">DashStack</span>
   </div>
 
   @for (item of mainMenuItems; track item) {
     <button
-      ngMenuItem
+      ngTreeItem
       type="button"
       [value]="item.label"
+      [parent]="navigationTree"
       [routerLink]="item.route"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
@@ -23,9 +24,10 @@
 
   @for (item of secondaryMenuItems; track item) {
     <button
-      ngMenuItem
+      ngTreeItem
       type="button"
       [value]="item.label"
+      [parent]="navigationTree"
       [routerLink]="item.route"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
