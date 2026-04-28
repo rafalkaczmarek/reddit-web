@@ -7,6 +7,12 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Prefer type inference when the type is obvious
 - Avoid the `any` type; use `unknown` when type is uncertain
 
+## Type Definitions
+
+- Define interfaces and types in separate files within the `src/app/types` folder
+- Use `.interface.ts` or `.type.ts` suffix for clarity
+- Import types where needed
+
 ## Angular Best Practices
 
 - Always use standalone components over NgModules

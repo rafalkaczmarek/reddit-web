@@ -1,10 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-interface MenuItem {
-  label: string;
-  icon: string;
-  active?: boolean;
-}
+import { MenuItem } from '../../types/menu-item.interface';
 
 @Component({
   selector: 'app-navigation-sidebar-menu',
