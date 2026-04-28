@@ -5,7 +5,8 @@
     {
       "files": ["*.ts"],
       "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
       ],
       "rules": {
         "sort-imports": [
@@ -22,6 +23,15 @@
             "max": 1,
             "maxBOF": 0,
             "maxEOF": 0
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "warn",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "constructors": "no-public"
+            }
           }
         ]
       }

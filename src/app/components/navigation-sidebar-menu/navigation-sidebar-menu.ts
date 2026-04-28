@@ -10,7 +10,7 @@ import { MenuItem } from '@reddit-web/types/menu-item.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationSidebarMenu {
-  menuItems: MenuItem[] = [
+  protected menuItems: MenuItem[] = [
     { label: 'Dashboard', icon: 'las la-tachometer-alt', active: true },
     { label: 'Products', icon: 'las la-box' },
     { label: 'Favourites', icon: 'las la-heart' },
