@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { DashboardKpi } from '@admin-panel-web/types/dashboard-kpi.interface';
 import { KpiCard } from '@admin-panel-web/features/dashboard/components/kpi-card/kpi-card';
@@ -22,7 +21,6 @@ describe('KpiCard', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [KpiCard],
-      providers: [provideAnimationsAsync()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(KpiCard);

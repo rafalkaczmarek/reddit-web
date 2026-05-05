@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { ChartPlaceholder } from '@admin-panel-web/features/dashboard/components/chart-placeholder/chart-placeholder';
 
@@ -11,7 +10,6 @@ describe('ChartPlaceholder', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ChartPlaceholder],
-      providers: [provideAnimationsAsync()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChartPlaceholder);

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { DashboardRecentItem } from '@admin-panel-web/types/dashboard-recent-item.interface';
 import { RecentOrdersTable } from '@admin-panel-web/features/dashboard/components/recent-orders-table/recent-orders-table';
@@ -18,7 +17,6 @@ describe('RecentOrdersTable', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RecentOrdersTable],
-      providers: [provideAnimationsAsync()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RecentOrdersTable);

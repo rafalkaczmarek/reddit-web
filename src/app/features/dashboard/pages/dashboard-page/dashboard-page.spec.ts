@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { signal } from '@angular/core';
 
 import { DashboardService } from '@admin-panel-web/features/dashboard/services/dashboard.service';
@@ -38,7 +37,6 @@ describe('DashboardPage', () => {
     await TestBed.configureTestingModule({
       imports: [DashboardPage],
       providers: [
-        provideAnimationsAsync(),
         { provide: DashboardService, useValue: mockService },
       ],
     }).compileComponents();
