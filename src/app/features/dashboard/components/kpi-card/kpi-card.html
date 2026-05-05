@@ -1,0 +1,15 @@
+<mat-card class="kpi-card">
+  <mat-card-content>
+    <div class="kpi-header">
+      <span class="kpi-title">{{ kpi().title }}</span>
+      <span class="kpi-icon" [style.background]="colorVar()">
+        <i [class]="iconClass()" aria-hidden="true"></i>
+      </span>
+    </div>
+    <p class="kpi-value">{{ kpi().value }}</p>
+    <p class="kpi-trend" [class.trend-up]="kpi().trend === 'up'" [class.trend-down]="kpi().trend === 'down'">
+      <i [class]="trendIcon()" aria-hidden="true"></i>
+      <span>{{ kpi().trendValue }}</span>
+    </p>
+  </mat-card-content>
+</mat-card>

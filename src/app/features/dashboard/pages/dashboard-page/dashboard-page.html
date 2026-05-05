@@ -1,0 +1,34 @@
+<app-page-content ariaLabelledBy="dashboard-heading">
+  <app-page-hero headingId="dashboard-heading" title="Dashboard" description="Welcome to your dashboard overview." />
+
+  @if (service.loading()) {
+    <div class="state-container" role="status" aria-label="Loading dashboard data">
+      <mat-spinner diameter="48" />
+      <p class="state-text">Loading dashboard data&hellip;</p>
+    </div>
+  } @else if (service.error()) {
+    <div class="state-container" role="alert">
+      <i class="las la-exclamation-triangle state-icon state-icon--error" aria-hidden="true"></i>
+      <p class="state-text">{{ service.error() }}</p>
+      <button mat-flat-button color="primary" (click)="retry()">Retry</button>
+    </div>
+  } @else if (service.isEmpty()) {
+    <div class="state-container" role="status">
+      <i class="las la-inbox state-icon" aria-hidden="true"></i>
+      <p class="state-text">No data available yet.</p>
+    </div>
+  } @else {
+    <section class="kpi-grid" aria-label="Key performance indicators">
+      @for (kpi of service.kpis(); track kpi.id) {
+        <app-kpi-card [kpi]="kpi" />
+      }
+    </section>
+
+    <section class="charts-grid" aria-label="Charts overview">
+      <app-chart-placeholder title="Sales Details" />
+      <app-chart-placeholder title="Revenue" />
+    </section>
+
+    <app-recent-orders-table [items]="service.recentItems()" />
+  }
+</app-page-content>

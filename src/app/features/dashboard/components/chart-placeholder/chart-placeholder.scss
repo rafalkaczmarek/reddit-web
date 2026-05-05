@@ -1,0 +1,36 @@
+.chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+}
+
+.chart-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 260px;
+  background: var(--bg-primary);
+  border-radius: 8px;
+  border: 2px dashed var(--border-color);
+}
+
+.chart-icon {
+  font-size: 48px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+.chart-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}

@@ -10,6 +10,11 @@
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
+  transition: background 0.2s ease;
+}
+
+:host-context(html.dark-theme) .sidebar {
+  background: #1e2230;
 }
 
 .logo {
@@ -78,4 +83,36 @@
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 0.2571px;
+}
+
+.theme-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+
+  &:hover {
+    background: rgba(76, 97, 204, 0.5);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+
+  i {
+    margin-right: 10px;
+    font-size: 22px;
+  }
 }

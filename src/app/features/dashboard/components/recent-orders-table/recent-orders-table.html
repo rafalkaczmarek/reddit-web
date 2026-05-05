@@ -1,0 +1,50 @@
+<section class="recent-orders" aria-labelledby="recent-orders-heading">
+  <h2 id="recent-orders-heading" class="section-title">Recent Orders</h2>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource()" matSort aria-label="Recent orders">
+      <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+        <td mat-cell *matCellDef="let row">{{ row.productName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Order ID</th>
+        <td mat-cell *matCellDef="let row">{{ row.orderId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let row">{{ row.date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="customer">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
+        <td mat-cell *matCellDef="let row">{{ row.customer }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row">
+          <span
+            class="status-badge"
+            [class.status-delivered]="row.status === 'delivered'"
+            [class.status-pending]="row.status === 'pending'"
+            [class.status-cancelled]="row.status === 'cancelled'"
+            [class.status-processing]="row.status === 'processing'"
+          >
+            {{ statusLabel(row.status) }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+        <td mat-cell *matCellDef="let row">{{ row.amount }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</section>

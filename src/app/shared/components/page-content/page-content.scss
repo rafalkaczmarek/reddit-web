@@ -3,5 +3,6 @@
   min-height: 100vh;
   padding: 24px;
   box-sizing: border-box;
-  background: #f7f9fc;
+  background: var(--bg-primary);
+  transition: background 0.2s ease;
 }

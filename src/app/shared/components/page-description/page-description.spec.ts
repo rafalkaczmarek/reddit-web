@@ -25,6 +25,6 @@ describe('PageDescription', () => {
     const paragraphElement = fixture.nativeElement.querySelector('p') as HTMLParagraphElement | null;
 
     expect(paragraphElement).not.toBeNull();
-    expect(paragraphElement?.textContent?.trim()).toBe('Browse and manage your product catalog.');
+    expect(paragraphElement?.textContent).toBe('Browse and manage your product catalog.');
   });
 });

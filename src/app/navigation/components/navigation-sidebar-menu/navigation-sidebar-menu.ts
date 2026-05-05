@@ -1,17 +1,35 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { Tree, TreeItem } from '@angular/aria/tree';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 import { NavigationMenuItem } from '@admin-panel-web/navigation/types/navigation-menu-item.interface';
+import { ThemeService } from '@admin-panel-web/shared/services/theme.service';
 
 @Component({
   selector: 'app-navigation-sidebar-menu',
-  imports: [Tree, TreeItem, RouterLink, RouterLinkActive],
+  imports: [Tree, TreeItem, RouterLink, RouterLinkActive, MatButtonModule],
   templateUrl: './navigation-sidebar-menu.html',
   styleUrl: './navigation-sidebar-menu.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationSidebarMenu {
+  private readonly themeService = inject(ThemeService);
+
+  protected readonly isDark = computed(() => this.themeService.mode() === 'dark');
+
+  protected readonly themeIcon = computed(() =>
+    this.isDark() ? 'las la-sun' : 'las la-moon'
+  );
+
+  protected readonly themeLabel = computed(() =>
+    this.isDark() ? 'Switch to light mode' : 'Switch to dark mode'
+  );
+
+  protected toggleTheme(): void {
+    this.themeService.toggle();
+  }
+
   protected mainMenuItems: NavigationMenuItem[] = [
     { label: 'Dashboard', icon: 'las la-tachometer-alt', route: '/dashboard' },
     { label: 'Products', icon: 'las la-box', route: '/products' },

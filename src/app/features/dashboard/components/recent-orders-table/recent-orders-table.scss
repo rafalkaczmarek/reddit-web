@@ -1,0 +1,66 @@
+.recent-orders {
+  margin-top: 24px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+}
+
+.table-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-mdc-header-cell {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+}
+
+td.mat-mdc-cell {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+tr.mat-mdc-row:hover {
+  background: var(--bg-primary);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.status-delivered {
+  background: rgba(0, 182, 155, 0.15);
+  color: var(--kpi-green);
+}
+
+.status-pending {
+  background: rgba(255, 159, 67, 0.15);
+  color: var(--kpi-orange);
+}
+
+.status-cancelled {
+  background: rgba(249, 60, 101, 0.15);
+  color: var(--kpi-red);
+}
+
+.status-processing {
+  background: rgba(72, 128, 255, 0.15);
+  color: var(--kpi-blue);
+}
