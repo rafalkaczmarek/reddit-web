@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageHeading } from './page-heading';
+import { PageHeading } from '@admin-panel-web/shared/components/page-heading/page-heading';
 
 describe('PageHeading', () => {
   let component: PageHeading;

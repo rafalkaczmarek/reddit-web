@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { PageDescription } from '../page-description/page-description';
-import { PageHeading } from '../page-heading/page-heading';
+import { PageDescription } from '@admin-panel-web/shared/components/page-description/page-description';
+import { PageHeading } from '@admin-panel-web/shared/components/page-heading/page-heading';
 
 @Component({
   selector: 'app-page-hero',

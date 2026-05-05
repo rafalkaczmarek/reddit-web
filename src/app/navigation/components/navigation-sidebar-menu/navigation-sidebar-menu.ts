@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Tree, TreeItem } from '@angular/aria/tree';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { NavigationMenuItem } from '@reddit-web/types/navigation-menu-item.interface';
+import { NavigationMenuItem } from '@admin-panel-web/navigation/types/navigation-menu-item.interface';
 
 @Component({
   selector: 'app-navigation-sidebar-menu',

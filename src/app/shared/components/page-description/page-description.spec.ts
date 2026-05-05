@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageDescription } from './page-description';
-
-const DESCRIPTION_TEXT = 'Browse and manage your product catalog.';
+import { PageDescription } from '@admin-panel-web/shared/components/page-description/page-description';
 
 describe('PageDescription', () => {
   let component: PageDescription;
@@ -15,7 +13,7 @@ describe('PageDescription', () => {
 
     fixture = TestBed.createComponent(PageDescription);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('text', DESCRIPTION_TEXT);
+    fixture.componentRef.setInput('text', 'Browse and manage your product catalog.');
     fixture.detectChanges();
   });
 
@@ -27,6 +25,6 @@ describe('PageDescription', () => {
     const paragraphElement = fixture.nativeElement.querySelector('p') as HTMLParagraphElement | null;
 
     expect(paragraphElement).not.toBeNull();
-    expect(paragraphElement?.textContent?.trim()).toBe(DESCRIPTION_TEXT);
+    expect(paragraphElement?.textContent?.trim()).toBe('Browse and manage your product catalog.');
   });
 });

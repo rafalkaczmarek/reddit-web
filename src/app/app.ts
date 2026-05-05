@@ -1,13 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavigationSidebarMenu } from './components/navigation-sidebar-menu/navigation-sidebar-menu';
+
+import { NavigationSidebarMenu } from '@admin-panel-web/navigation/components/navigation-sidebar-menu/navigation-sidebar-menu';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, NavigationSidebarMenu],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {
-  protected readonly title = signal('reddit-web');
-}
+export class App {}

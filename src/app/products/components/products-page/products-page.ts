@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { PageContent } from '../ui/page-content/page-content';
-import { PageHero } from '../ui/page-hero/page-hero';
+import { PageContent } from '@admin-panel-web/shared/components/page-content/page-content';
+import { PageHero } from '@admin-panel-web/shared/components/page-hero/page-hero';
 
 @Component({
   selector: 'app-products-page',

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
-import { NavigationSidebarMenu } from './navigation-sidebar-menu';
+import { NavigationSidebarMenu } from '@admin-panel-web/navigation/components/navigation-sidebar-menu/navigation-sidebar-menu';
 
 describe('NavigationSidebarMenu', () => {
   let component: NavigationSidebarMenu;

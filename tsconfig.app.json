@@ -7,7 +7,7 @@
     "types": [],
     "baseUrl": "./",
     "paths": {
-      "@reddit-web/*": ["src/app/*"]
+      "@admin-panel-web/*": ["src/app/*"]
     }
   },
   "include": [

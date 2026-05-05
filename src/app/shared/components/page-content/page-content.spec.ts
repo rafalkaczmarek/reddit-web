@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageContent } from './page-content';
+import { PageContent } from '@admin-panel-web/shared/components/page-content/page-content';
 
 describe('PageContent', () => {
   let component: PageContent;
