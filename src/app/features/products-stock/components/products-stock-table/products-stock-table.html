@@ -1,0 +1,64 @@
+<section class="products-table-section" aria-labelledby="products-table-heading">
+  <h2 id="products-table-heading" class="visually-hidden">Products list</h2>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource()" matSort aria-label="Products">
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Image</th>
+        <td mat-cell *matCellDef="let row">
+          <img class="product-image" [src]="row.image" [alt]="row.name + ' thumbnail'" width="48" height="48" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+        <td mat-cell *matCellDef="let row">{{ row.category }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+        <td mat-cell *matCellDef="let row">{{ row.price | currency: 'USD' : 'symbol' : '1.2-2' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="piece">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Piece</th>
+        <td mat-cell *matCellDef="let row">
+          <span class="status-badge" [class.status-in-stock]="row.status === 'in-stock'" [class.status-out-of-stock]="row.status === 'out-of-stock'">
+            {{ statusLabel(row.status) }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="availableColors">
+        <th mat-header-cell *matHeaderCellDef>Available Color</th>
+        <td mat-cell *matCellDef="let row">
+          <div class="color-dots" [attr.aria-label]="'Available colors: ' + colorsAriaLabel(row.availableColors)" role="img">
+            @for (color of row.availableColors; track color) {
+              <span class="color-dot" [style.background]="color" aria-hidden="true"></span>
+            }
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button [attr.aria-label]="'Edit ' + row.name">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button [attr.aria-label]="'Delete ' + row.name">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</section>

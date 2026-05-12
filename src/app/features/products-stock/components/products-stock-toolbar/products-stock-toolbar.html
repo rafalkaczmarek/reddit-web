@@ -1,0 +1,23 @@
+<div class="products-toolbar">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-icon matPrefix aria-hidden="true">search</mat-icon>
+    <mat-label>Search product...</mat-label>
+    <input
+      matInput
+      type="search"
+      (input)="onSearchInput($event)"
+      aria-label="Search products by name or category"
+    />
+  </mat-form-field>
+
+  <div class="toolbar-actions">
+    <button
+      mat-flat-button
+      class="add-product-button"
+      (click)="onAddProduct()"
+      aria-label="Add new product"
+    >
+      Add Product
+    </button>
+  </div>
+</div>

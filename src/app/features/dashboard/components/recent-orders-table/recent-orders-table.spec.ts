@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardRecentItem } from '@admin-panel-web/types/dashboard-recent-item.interface';
+import { DashboardRecentItem } from '@admin-panel-web/features/dashboard/types/dashboard-recent-item.interface';
 import { RecentOrdersTable } from '@admin-panel-web/features/dashboard/components/recent-orders-table/recent-orders-table';
 
 const MOCK_ITEMS: DashboardRecentItem[] = [

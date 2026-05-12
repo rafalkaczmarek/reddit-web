@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
-import { DashboardKpi } from '@admin-panel-web/types/dashboard-kpi.interface';
+import { DashboardKpi } from '@admin-panel-web/features/dashboard/types/dashboard-kpi.interface';
 
 @Component({
   selector: 'app-kpi-card',

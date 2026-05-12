@@ -1,7 +1,7 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 
-import { DashboardKpi } from '@admin-panel-web/types/dashboard-kpi.interface';
-import { DashboardRecentItem } from '@admin-panel-web/types/dashboard-recent-item.interface';
+import { DashboardKpi } from '@admin-panel-web/features/dashboard/types/dashboard-kpi.interface';
+import { DashboardRecentItem } from '@admin-panel-web/features/dashboard/types/dashboard-recent-item.interface';
 import { DashboardRepository } from '@admin-panel-web/features/dashboard/services/dashboard.repository';
 
 import { catchError, finalize, of, forkJoin } from 'rxjs';

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
-import { DashboardRecentItem } from '@admin-panel-web/types/dashboard-recent-item.interface';
+import { DashboardRecentItem } from '@admin-panel-web/features/dashboard/types/dashboard-recent-item.interface';
 
 @Component({
   selector: 'app-recent-orders-table',

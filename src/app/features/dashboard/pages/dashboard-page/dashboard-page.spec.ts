@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
 
 import { DashboardService } from '@admin-panel-web/features/dashboard/services/dashboard.service';
-import { DashboardKpi } from '@admin-panel-web/types/dashboard-kpi.interface';
-import { DashboardRecentItem } from '@admin-panel-web/types/dashboard-recent-item.interface';
+import { DashboardKpi } from '@admin-panel-web/features/dashboard/types/dashboard-kpi.interface';
+import { DashboardRecentItem } from '@admin-panel-web/features/dashboard/types/dashboard-recent-item.interface';
 import { DashboardPage } from '@admin-panel-web/features/dashboard/pages/dashboard-page/dashboard-page';
 
 const MOCK_KPIS: DashboardKpi[] = [

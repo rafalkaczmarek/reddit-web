@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DashboardKpi } from '@admin-panel-web/types/dashboard-kpi.interface';
-import { DashboardRecentItem } from '@admin-panel-web/types/dashboard-recent-item.interface';
+import { DashboardKpi } from '@admin-panel-web/features/dashboard/types/dashboard-kpi.interface';
+import { DashboardRecentItem } from '@admin-panel-web/features/dashboard/types/dashboard-recent-item.interface';
 import { DashboardRepository } from '@admin-panel-web/features/dashboard/services/dashboard.repository';
 import { DashboardService } from '@admin-panel-web/features/dashboard/services/dashboard.service';
 

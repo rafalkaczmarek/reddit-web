@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardKpi } from '@admin-panel-web/types/dashboard-kpi.interface';
+import { DashboardKpi } from '@admin-panel-web/features/dashboard/types/dashboard-kpi.interface';
 import { KpiCard } from '@admin-panel-web/features/dashboard/components/kpi-card/kpi-card';
 
 const MOCK_KPI: DashboardKpi = {

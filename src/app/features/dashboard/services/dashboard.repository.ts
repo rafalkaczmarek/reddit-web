@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { DashboardKpi } from '@admin-panel-web/types/dashboard-kpi.interface';
-import { DashboardRecentItem } from '@admin-panel-web/types/dashboard-recent-item.interface';
+import { DashboardKpi } from '@admin-panel-web/features/dashboard/types/dashboard-kpi.interface';
+import { DashboardRecentItem } from '@admin-panel-web/features/dashboard/types/dashboard-recent-item.interface';
 
 import { Observable, of, delay } from 'rxjs';
 

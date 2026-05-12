@@ -18,12 +18,10 @@ export class NavigationSidebarMenu {
 
   protected readonly isDark = computed(() => this.themeService.mode() === 'dark');
 
-  protected readonly themeIcon = computed(() =>
-    this.isDark() ? 'las la-sun' : 'las la-moon'
-  );
+  protected readonly themeIcon = computed(() => (this.isDark() ? 'las la-sun' : 'las la-moon'));
 
   protected readonly themeLabel = computed(() =>
-    this.isDark() ? 'Switch to light mode' : 'Switch to dark mode'
+    this.isDark() ? 'Switch to light mode' : 'Switch to dark mode',
   );
 
   protected toggleTheme(): void {
@@ -36,7 +34,7 @@ export class NavigationSidebarMenu {
     { label: 'Favourites', icon: 'las la-heart', route: '/favourites' },
     { label: 'Messenger', icon: 'las la-envelope', route: '/messenger' },
     { label: 'Order Lists', icon: 'las la-list', route: '/order-lists' },
-    { label: 'E-commerce', icon: 'las la-shopping-cart', route: '/e-commerce' },
+    { label: 'Products Stock', icon: 'las la-box', route: '/products-stock' },
   ];
 
   protected secondaryMenuItems: NavigationMenuItem[] = [

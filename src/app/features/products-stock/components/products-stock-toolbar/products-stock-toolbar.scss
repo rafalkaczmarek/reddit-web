@@ -1,0 +1,30 @@
+.products-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.search-field {
+  flex: 1;
+  min-width: 200px;
+  max-width: 360px;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-product-button {
+  background-color: var(--kpi-blue) !important;
+  color: #fff !important;
+  text-transform: none;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0 24px;
+  height: 40px;
+}
