@@ -2,7 +2,7 @@
   <h2 id="recent-orders-heading" class="section-title">Recent Orders</h2>
 
   <div class="table-container">
-    <table mat-table [dataSource]="dataSource()" matSort aria-label="Recent orders">
+    <table mat-table [dataSource]="dataSource()" matSort aria-label="Recent orders table">
       <ng-container matColumnDef="productName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
         <td mat-cell *matCellDef="let row">{{ row.productName }}</td>
