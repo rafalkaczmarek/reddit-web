@@ -77,4 +77,26 @@ test.describe('Products stock', () => {
       await expect(firstRowProductNameCell(table)).toHaveText('Samsung A50');
     });
   });
+
+  test.describe('table pagination', () => {
+    test('shows the next slice of products after changing page size and using next page', async ({
+      page,
+    }) => {
+      await page.goto('/products-stock');
+      const table = await waitForProductsTableLoaded(page);
+      const paginator = page.getByRole('group', { name: 'Select page of product stock' });
+
+      await paginator.locator('.mat-mdc-paginator-touch-target').click();
+      await page.getByRole('option', { name: '5', exact: true }).click();
+
+      await expect(table.locator('tbody tr')).toHaveCount(5);
+
+      await paginator.getByRole('button', { name: 'Next page' }).click();
+
+      await expect(firstRowProductNameCell(table)).toHaveText('Sennheiser Case');
+      await expect(
+        page.getByRole('cell', { name: 'Apple Watch Series 4', exact: true })
+      ).toHaveCount(0);
+    });
+  });
 });
