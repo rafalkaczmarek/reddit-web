@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { ProductStock } from '@admin-panel-web/features/products-stock/types/product-stock.interface';
+import { PRODUCT_STOCK_SORTABLE_COLUMNS } from '@admin-panel-web/features/products-stock/types/product-stock-sortable-column.type';
 
 @Component({
   selector: 'app-products-stock-table',
@@ -20,7 +21,12 @@ export class ProductsStockTable {
   public readonly sortDirection = input<SortDirection>('');
   public readonly sortChange = output<Sort>();
 
-  protected readonly displayedColumns = ['image', 'name', 'category', 'price', 'piece', 'availableColors', 'action'];
+  protected readonly displayedColumns = [
+    'image',
+    ...PRODUCT_STOCK_SORTABLE_COLUMNS,
+    'availableColors',
+    'action',
+  ];
 
   protected onMatSortChange(sort: Sort): void {
     this.sortChange.emit(sort);
