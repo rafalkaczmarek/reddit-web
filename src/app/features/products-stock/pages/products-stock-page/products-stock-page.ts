@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/cor
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
 
 import { PageContent } from '@admin-panel-web/shared/components/page-content/page-content';
 import { PageHero } from '@admin-panel-web/shared/components/page-hero/page-hero';
@@ -25,18 +26,18 @@ import { ProductsStockTable } from '@admin-panel-web/features/products-stock/com
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsStockPage implements OnInit {
-  protected readonly service = inject(ProductsStockService);
+  protected readonly productsStockService = inject(ProductsStockService);
 
   public ngOnInit(): void {
-    this.service.loadProducts();
+    this.productsStockService.loadProducts();
   }
 
   protected retry(): void {
-    this.service.loadProducts();
+    this.productsStockService.loadProducts();
   }
 
   protected onSearch(query: string): void {
-    this.service.search(query);
+    this.productsStockService.search(query);
   }
 
   protected onAddProduct(): void {
@@ -44,6 +45,10 @@ export class ProductsStockPage implements OnInit {
   }
 
   protected onPageChange(event: PageEvent): void {
-    this.service.changePage(event.pageIndex, event.pageSize);
+    this.productsStockService.changePage(event.pageIndex, event.pageSize);
+  }
+
+  protected onSortChange(sort: Sort): void {
+    this.productsStockService.changeSort(sort);
   }
 }

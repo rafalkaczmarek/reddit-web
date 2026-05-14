@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
 
-import { ProductsStockPage } from '@admin-panel-web/features/products-stock/components/products-stock-page/products-stock-page';
+import { SortDirection } from '@angular/material/sort';
+
+import { ProductsStockPage } from '@admin-panel-web/features/products-stock/pages/products-stock-page/products-stock-page';
 import { ProductsStockService } from '@admin-panel-web/features/products-stock/services/products-stock.service';
 import { ProductStock } from '@admin-panel-web/features/products-stock/types/product-stock.interface';
 
@@ -25,12 +27,15 @@ function createMockProductsStockService() {
     totalCount: signal(0),
     pageIndex: signal(0),
     pageSize: signal(10),
+    sortActive: signal<string>(''),
+    sortDirection: signal<SortDirection>(''),
     loading: signal(false),
     error: signal<string | null>(null),
     isEmpty: signal(true),
     loadProducts: vi.fn(),
     search: vi.fn(),
     changePage: vi.fn(),
+    changeSort: vi.fn(),
   };
 }
 

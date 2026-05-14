@@ -1,18 +1,18 @@
 <app-page-content ariaLabelledBy="products-stock-heading">
   <app-page-hero headingId="products-stock-heading" title="Products Stock" description="Browse and manage your product stock." />
 
-  @if (service.loading()) {
+  @if (productsStockService.loading()) {
     <div class="state-container" role="status" aria-label="Loading products stock">
       <mat-spinner diameter="48" />
       <p class="state-text">Loading products stock&hellip;</p>
     </div>
-  } @else if (service.error()) {
+  } @else if (productsStockService.error()) {
     <div class="state-container" role="alert">
       <i class="las la-exclamation-triangle state-icon state-icon--error" aria-hidden="true"></i>
-      <p class="state-text">{{ service.error() }}</p>
+      <p class="state-text">{{ productsStockService.error() }}</p>
       <button mat-flat-button color="primary" (click)="retry()">Retry</button>
     </div>
-  } @else if (service.isEmpty()) {
+  } @else if (productsStockService.isEmpty()) {
     <div class="state-container" role="status">
       <i class="las la-box-open state-icon" aria-hidden="true"></i>
       <p class="state-text">No product stock available yet.</p>
@@ -20,12 +20,17 @@
   } @else {
     <app-products-stock-toolbar (searchChange)="onSearch($event)" (addProduct)="onAddProduct()" />
 
-    <app-products-stock-table [products]="service.paginatedProducts()" />
+    <app-products-stock-table
+      [products]="productsStockService.paginatedProducts()"
+      [sortActive]="productsStockService.sortActive()"
+      [sortDirection]="productsStockService.sortDirection()"
+      (sortChange)="onSortChange($event)"
+    />
 
     <mat-paginator
-      [length]="service.totalCount()"
-      [pageIndex]="service.pageIndex()"
-      [pageSize]="service.pageSize()"
+      [length]="productsStockService.totalCount()"
+      [pageIndex]="productsStockService.pageIndex()"
+      [pageSize]="productsStockService.pageSize()"
       [pageSizeOptions]="[5, 10, 25]"
       (page)="onPageChange($event)"
       aria-label="Select page of product stock"

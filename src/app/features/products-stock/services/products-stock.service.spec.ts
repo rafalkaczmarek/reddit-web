@@ -115,6 +115,34 @@ describe('ProductsStockService', () => {
     expect(service.paginatedProducts().length).toBe(1);
   });
 
+  it('should sort filtered products by name ascending', () => {
+    setup();
+    service.loadProducts();
+    service.changeSort({ active: 'name', direction: 'asc' });
+
+    const names = service.paginatedProducts().map((p) => p.name);
+    expect(names).toEqual(['Apple Watch', 'Samsung Phone', "Women Dress"]);
+  });
+
+  it('should sort filtered products by price descending', () => {
+    setup();
+    service.loadProducts();
+    service.changeSort({ active: 'price', direction: 'desc' });
+
+    expect(service.paginatedProducts().map((p) => p.price)).toEqual([690, 400, 120]);
+  });
+
+  it('should reset page index when sort changes', () => {
+    setup();
+    service.loadProducts();
+    service.changePage(1, 1);
+    expect(service.pageIndex()).toBe(1);
+
+    service.changeSort({ active: 'name', direction: 'asc' });
+
+    expect(service.pageIndex()).toBe(0);
+  });
+
   it('should clear previous error on retry', () => {
     setup({
       getProducts: () => throwError(() => new Error('fail')),

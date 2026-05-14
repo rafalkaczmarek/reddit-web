@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
+import { MatSortModule, Sort, SortDirection } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -16,9 +16,15 @@ import { ProductStock } from '@admin-panel-web/features/products-stock/types/pro
 })
 export class ProductsStockTable {
   public readonly products = input.required<ProductStock[]>();
+  public readonly sortActive = input<string>('');
+  public readonly sortDirection = input<SortDirection>('');
+  public readonly sortChange = output<Sort>();
 
   protected readonly displayedColumns = ['image', 'name', 'category', 'price', 'piece', 'availableColors', 'action'];
-  protected readonly dataSource = computed(() => this.products());
+
+  protected onMatSortChange(sort: Sort): void {
+    this.sortChange.emit(sort);
+  }
 
   protected statusLabel(status: ProductStock['status']): string {
     const labels: Record<ProductStock['status'], string> = {
