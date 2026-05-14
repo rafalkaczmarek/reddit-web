@@ -1,4 +1,8 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+
+import { clickColumnSortButton } from '../utils/click-column-sort-button.util';
+import { firstRowProductNameCell } from '../utils/first-row-product-name-cell.util';
+import { waitForProductsTableLoaded } from '../utils/wait-for-products-table-loaded.util';
 
 test.describe('Products stock', () => {
   test('navigates to products stock page from sidebar', async ({ page }) => {
@@ -21,5 +25,56 @@ test.describe('Products stock', () => {
 
     await expect(page.getByRole('cell', { name: 'Samsung A50', exact: true })).toBeVisible();
     await expect(page.getByRole('cell', { name: 'Apple Watch Series 4' })).toHaveCount(0);
+  });
+
+  test.describe('table sorting', () => {
+    test('sorts by product name ascending', async ({ page }) => {
+      await page.goto('/products-stock');
+      const table = await waitForProductsTableLoaded(page);
+
+      await clickColumnSortButton(table, 'Product Name');
+
+      await expect(firstRowProductNameCell(table)).toHaveText('Apple Airpods');
+    });
+
+    test('sorts by product name descending', async ({ page }) => {
+      await page.goto('/products-stock');
+      const table = await waitForProductsTableLoaded(page);
+
+      await clickColumnSortButton(table, 'Product Name');
+      await clickColumnSortButton(table, 'Product Name');
+
+      await expect(firstRowProductNameCell(table)).toHaveText("Women's Casual Wear");
+    });
+
+    test('sorts by price ascending', async ({ page }) => {
+      await page.goto('/products-stock');
+      const table = await waitForProductsTableLoaded(page);
+
+      await clickColumnSortButton(table, 'Price');
+
+      await expect(firstRowProductNameCell(table)).toHaveText('Apple Airpods');
+    });
+
+    test('sorts by category ascending', async ({ page }) => {
+      await page.goto('/products-stock');
+      const table = await waitForProductsTableLoaded(page);
+
+      await clickColumnSortButton(table, 'Category');
+
+      await expect(firstRowProductNameCell(table)).toHaveText('Apple Watch Series 4');
+    });
+
+    test('sorts by piece column using stock status (descending puts out-of-stock first)', async ({
+      page,
+    }) => {
+      await page.goto('/products-stock');
+      const table = await waitForProductsTableLoaded(page);
+
+      await clickColumnSortButton(table, 'Piece');
+      await clickColumnSortButton(table, 'Piece');
+
+      await expect(firstRowProductNameCell(table)).toHaveText('Samsung A50');
+    });
   });
 });
