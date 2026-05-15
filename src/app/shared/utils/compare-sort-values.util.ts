@@ -8,5 +8,6 @@ export function compareSortValues(a: string | number, b: string | number): numbe
     }
     return 0;
   }
+
   return String(a).localeCompare(String(b), undefined, { sensitivity: 'base', numeric: true });
 }

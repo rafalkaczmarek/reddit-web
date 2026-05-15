@@ -1,4 +1,4 @@
-import { compareSortValues } from '@admin-panel-web/features/products-stock/utils/compare-sort-values.util';
+import { compareSortValues } from '@admin-panel-web/shared/utils/compare-sort-values.util';
 
 describe('compareSortValues', () => {
   it('should return negative when first number is less than second', () => {

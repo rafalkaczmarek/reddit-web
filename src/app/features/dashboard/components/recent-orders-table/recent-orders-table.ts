@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
+import { MatSortModule, Sort, SortDirection } from '@angular/material/sort';
 
 import { DashboardRecentItem } from '@admin-panel-web/features/dashboard/types/dashboard-recent-item.interface';
+import { getDashboardRecentItemSortValue } from '@admin-panel-web/features/dashboard/utils/dashboard-recent-item-sort-value.util';
+import { sortByColumn } from '@admin-panel-web/shared/utils/sort-by-column.util';
 
 @Component({
   selector: 'app-recent-orders-table',
@@ -16,7 +18,22 @@ export class RecentOrdersTable {
 
   protected readonly displayedColumns = ['productName', 'orderId', 'date', 'customer', 'status', 'amount'];
 
-  protected readonly dataSource = computed(() => this.items());
+  protected readonly sortActive = signal<string>('');
+  protected readonly sortDirection = signal<SortDirection>('');
+
+  protected readonly sortedItems = computed(() =>
+    sortByColumn(
+      this.items(),
+      this.sortActive(),
+      this.sortDirection(),
+      getDashboardRecentItemSortValue
+    )
+  );
+
+  protected onMatSortChange(sort: Sort): void {
+    this.sortActive.set(sort.direction === '' ? '' : sort.active);
+    this.sortDirection.set(sort.direction);
+  }
 
   protected statusLabel(status: DashboardRecentItem['status']): string {
     const labels: Record<DashboardRecentItem['status'], string> = {

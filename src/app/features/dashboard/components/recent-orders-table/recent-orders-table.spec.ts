@@ -43,7 +43,29 @@ describe('RecentOrdersTable', () => {
 
   it('should render a table with aria-label', () => {
     const table = el.querySelector('table');
-    expect(table?.getAttribute('aria-label')).toBe('Recent orders');
+    expect(table?.getAttribute('aria-label')).toBe('Recent orders table');
+  });
+
+  it('should sort rows by product name ascending when header is clicked', () => {
+    const productHeader = el.querySelector('th.mat-column-productName') as HTMLElement;
+    productHeader.click();
+    fixture.detectChanges();
+
+    const rows = el.querySelectorAll('tr.mat-mdc-row');
+    expect(rows[0]?.textContent).toContain('Apple Watch');
+    expect(rows[2]?.textContent).toContain('MacBook Pro');
+  });
+
+  it('should sort rows by amount descending when header is clicked twice', () => {
+    const amountHeader = el.querySelector('th.mat-column-amount') as HTMLElement;
+    amountHeader.click();
+    fixture.detectChanges();
+    amountHeader.click();
+    fixture.detectChanges();
+
+    const rows = el.querySelectorAll('tr.mat-mdc-row');
+    expect(rows[0]?.textContent).toContain('MacBook Pro');
+    expect(rows[2]?.textContent).toContain('Apple Watch');
   });
 
   it('should render correct number of rows', () => {

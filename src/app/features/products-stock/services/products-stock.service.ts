@@ -3,8 +3,8 @@ import { Sort, SortDirection } from '@angular/material/sort';
 
 import { ProductStock } from '@admin-panel-web/features/products-stock/types/product-stock.interface';
 import { ProductsStockRepository } from '@admin-panel-web/features/products-stock/services/products-stock.repository';
-import { compareSortValues } from '@admin-panel-web/features/products-stock/utils/compare-sort-values.util';
 import { getProductStockSortValue } from '@admin-panel-web/features/products-stock/utils/product-stock-sort-value.util';
+import { sortByColumn } from '@admin-panel-web/shared/utils/sort-by-column.util';
 
 import { catchError, finalize, of } from 'rxjs';
 
@@ -39,23 +39,14 @@ export class ProductsStockService {
     );
   });
 
-  public readonly sortedFilteredProducts = computed(() => {
-    const rows = [...this.filteredProducts()];
-    const active = this._sortActive();
-    const direction = this._sortDirection();
-    if (!active || direction === '') {
-      return rows;
-    }
-    const mult = direction === 'desc' ? -1 : 1;
-    rows.sort(
-      (a, b) =>
-        compareSortValues(
-          getProductStockSortValue(a, active),
-          getProductStockSortValue(b, active)
-        ) * mult
-    );
-    return rows;
-  });
+  public readonly sortedFilteredProducts = computed(() =>
+    sortByColumn(
+      this.filteredProducts(),
+      this._sortActive(),
+      this._sortDirection(),
+      getProductStockSortValue
+    )
+  );
 
   public readonly totalCount = computed(() => this.sortedFilteredProducts().length);
 
