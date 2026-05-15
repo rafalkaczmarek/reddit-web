@@ -46,27 +46,49 @@ describe('RecentOrdersTable', () => {
     expect(table?.getAttribute('aria-label')).toBe('Recent orders table');
   });
 
-  it('should sort rows by product name ascending when header is clicked', () => {
-    const productHeader = el.querySelector('th.mat-column-productName') as HTMLElement;
-    productHeader.click();
-    fixture.detectChanges();
+  function clickSortHeader(column: string, clicks = 1): void {
+    const header = el.querySelector(`th.mat-column-${column}`) as HTMLElement;
+    for (let i = 0; i < clicks; i++) {
+      header.click();
+      fixture.detectChanges();
+    }
+  }
 
+  function expectRowOrder(first: string, last: string): void {
     const rows = el.querySelectorAll('tr.mat-mdc-row');
-    expect(rows[0]?.textContent).toContain('Apple Watch');
-    expect(rows[2]?.textContent).toContain('MacBook Pro');
-  });
+    expect(rows[0]?.textContent).toContain(first);
+    expect(rows[rows.length - 1]?.textContent).toContain(last);
+  }
 
-  it('should sort rows by amount descending when header is clicked twice', () => {
-    const amountHeader = el.querySelector('th.mat-column-amount') as HTMLElement;
-    amountHeader.click();
-    fixture.detectChanges();
-    amountHeader.click();
-    fixture.detectChanges();
+  it.each([
+    { column: 'productName', first: 'Apple Watch', last: 'MacBook Pro' },
+    { column: 'orderId', first: '#APL-7281', last: '#MBP-3924' },
+    { column: 'date', first: '2024-12-10', last: '2024-12-12' },
+    { column: 'customer', first: 'Bob', last: 'John' },
+    { column: 'status', first: 'Cancelled', last: 'Pending' },
+    { column: 'amount', first: '$120', last: '$1,799' },
+  ])(
+    'should sort rows by $column ascending when header is clicked',
+    ({ column, first, last }) => {
+      clickSortHeader(column);
+      expectRowOrder(first, last);
+    },
+  );
 
-    const rows = el.querySelectorAll('tr.mat-mdc-row');
-    expect(rows[0]?.textContent).toContain('MacBook Pro');
-    expect(rows[2]?.textContent).toContain('Apple Watch');
-  });
+  it.each([
+    { column: 'productName', first: 'MacBook Pro', last: 'Apple Watch' },
+    { column: 'orderId', first: '#MBP-3924', last: '#APL-7281' },
+    { column: 'date', first: '2024-12-12', last: '2024-12-10' },
+    { column: 'customer', first: 'John', last: 'Bob' },
+    { column: 'status', first: 'Pending', last: 'Cancelled' },
+    { column: 'amount', first: 'MacBook Pro', last: 'Apple Watch' },
+  ])(
+    'should sort rows by $column descending when header is clicked twice',
+    ({ column, first, last }) => {
+      clickSortHeader(column, 2);
+      expectRowOrder(first, last);
+    },
+  );
 
   it('should render correct number of rows', () => {
     const rows = el.querySelectorAll('tr.mat-mdc-row');
