@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardRecentItem } from '@admin-panel-web/features/dashboard/types/dashboard-recent-item.interface';
 import { RecentOrdersTable } from '@admin-panel-web/features/dashboard/components/recent-orders-table/recent-orders-table';
+import { clickSortHeader } from '@admin-panel-web/shared/utils/spec/click-sort-header';
 
 const MOCK_ITEMS: DashboardRecentItem[] = [
   { id: '1', productName: 'Apple Watch', orderId: '#APL-7281', date: '2024-12-12', customer: 'John', status: 'delivered', amount: '$120' },
@@ -46,14 +47,6 @@ describe('RecentOrdersTable', () => {
     expect(table?.getAttribute('aria-label')).toBe('Recent orders table');
   });
 
-  function clickSortHeader(column: string, clicks = 1): void {
-    const header = el.querySelector(`th.mat-column-${column}`) as HTMLElement;
-    for (let i = 0; i < clicks; i++) {
-      header.click();
-      fixture.detectChanges();
-    }
-  }
-
   function expectRowOrder(first: string, last: string): void {
     const rows = el.querySelectorAll('tr.mat-mdc-row');
     expect(rows[0]?.textContent).toContain(first);
@@ -70,7 +63,7 @@ describe('RecentOrdersTable', () => {
   ])(
     'should sort rows by $column ascending when header is clicked',
     ({ column, first, last }) => {
-      clickSortHeader(column);
+      clickSortHeader(fixture, el, column);
       expectRowOrder(first, last);
     },
   );
@@ -85,7 +78,7 @@ describe('RecentOrdersTable', () => {
   ])(
     'should sort rows by $column descending when header is clicked twice',
     ({ column, first, last }) => {
-      clickSortHeader(column, 2);
+      clickSortHeader(fixture, el, column, 2);
       expectRowOrder(first, last);
     },
   );
