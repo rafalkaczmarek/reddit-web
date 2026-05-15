@@ -1,2 +1,4 @@
-﻿<app-navigation-sidebar-menu />
+﻿@if (showSidebar()) {
+  <app-navigation-sidebar-menu />
+}
 <router-outlet />

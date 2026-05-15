@@ -1,12 +1,17 @@
 import { expect, test } from '@playwright/test';
 
+import { loginAsDemoUser } from '../utils/login-as-demo-user.util';
 import { clickColumnSortButton } from '../utils/click-column-sort-button.util';
 import { firstRowProductNameCell } from '../utils/first-row-product-name-cell.util';
 import { waitForProductsTableLoaded } from '../utils/wait-for-products-table-loaded.util';
 
 test.describe('Products stock', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAsDemoUser(page);
+  });
+
   test('navigates to products stock page from sidebar', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dashboard');
 
     await page.getByRole('treeitem', { name: 'Products Stock' }).click();
 

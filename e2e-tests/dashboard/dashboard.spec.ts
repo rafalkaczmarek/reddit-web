@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+import { loginAsDemoUser } from '../utils/login-as-demo-user.util';
+
 test.describe('Dashboard', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await loginAsDemoUser(page);
   });
 
   test('redirects to dashboard and renders key content', async ({ page }) => {

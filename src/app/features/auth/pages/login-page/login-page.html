@@ -1,0 +1,95 @@
+<main class="login-page" [attr.aria-labelledby]="headingId">
+  <section class="login-card">
+    <div class="login-brand">
+      <span class="login-brand-logo">DashStack</span>
+    </div>
+
+    <header class="login-header">
+      <h1 [id]="headingId" class="login-heading">Login to Account</h1>
+      <p class="login-subtitle">Please enter your email and password to continue</p>
+    </header>
+
+    <form
+      class="login-form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      novalidate
+    >
+      <mat-form-field appearance="outline" class="login-field">
+        <mat-label>Email address</mat-label>
+        <input
+          matInput
+          type="email"
+          autocomplete="email"
+          formControlName="email"
+          aria-required="true"
+        />
+        @if (form.controls.email.touched && form.controls.email.hasError('required')) {
+          <mat-error>Email is required.</mat-error>
+        }
+        @if (form.controls.email.touched && form.controls.email.hasError('email')) {
+          <mat-error>Enter a valid email address.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="login-field">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="passwordVisible() ? 'text' : 'password'"
+          autocomplete="current-password"
+          formControlName="password"
+          aria-required="true"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          class="password-toggle"
+          [attr.aria-label]="passwordVisible() ? 'Hide password' : 'Show password'"
+          [attr.aria-pressed]="passwordVisible()"
+          (click)="togglePasswordVisibility()"
+        >
+          <mat-icon aria-hidden="true">
+            {{ passwordVisible() ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+        @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+          <mat-error>Password is required.</mat-error>
+        }
+        @if (form.controls.password.touched && form.controls.password.hasError('minlength')) {
+          <mat-error>Password must be at least 6 characters.</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="login-options">
+        <mat-checkbox formControlName="rememberMe" color="primary">Remember password</mat-checkbox>
+        <a class="forgot-link" routerLink="/forgot-password">Forget Password?</a>
+      </div>
+
+      @if (errorMessage()) {
+        <p [id]="errorId" class="login-error" role="alert">{{ errorMessage() }}</p>
+      }
+
+      <button
+        mat-flat-button
+        type="submit"
+        class="login-button"
+        [attr.aria-describedby]="errorMessage() ? errorId : null"
+        [disabled]="submitting()"
+      >
+        @if (submitting()) {
+          <mat-spinner diameter="20" class="login-button-spinner" />
+          <span>Signing in...</span>
+        } @else {
+          <span>Sign In</span>
+        }
+      </button>
+    </form>
+
+    <p class="login-footer">
+      Don't have an account?
+      <a class="login-footer-link" routerLink="/register">Create Account</a>
+    </p>
+  </section>
+</main>
